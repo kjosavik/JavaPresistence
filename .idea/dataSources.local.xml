@@ -2,13 +2,13 @@
 <project version="4">
   <component name="dataSourceStorageLocal">
     <data-source name="minDb4@localhost" uuid="7b4a9d82-cc9b-45ca-8eca-5034d100a89f">
-      <database-info product="Apache Derby" version="10.13.1.1 - (1765088)" jdbc-version="4.2" driver-name="Apache Derby Network Client JDBC Driver" driver-version="10.11.1.1 - (1616546)">
-        <identifier-quote-string>&quot;</identifier-quote-string>
-      </database-info>
-      <case-sensitivity plain-identifiers="upper" quoted-identifiers="exact" />
       <secret-storage>master_key</secret-storage>
       <user-name>app</user-name>
-      <resolve-scope>:APP</resolve-scope>
+    </data-source>
+    <data-source name="kontoEntity4/TopLink" uuid="63f366a5-dd3b-449e-99b4-7959ea5e5afb">
+      <first-sync>true</first-sync>
+      <user-name>app</user-name>
+      <user-password>dfcbdfdadfda</user-password>
     </data-source>
   </component>
 </project>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="minDb4@localhost" uuid="7b4a9d82-cc9b-45ca-8eca-5034d100a89f">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source name="kontoEntity4/TopLink" uuid="63f366a5-dd3b-449e-99b4-7959ea5e5afb">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+</component>
