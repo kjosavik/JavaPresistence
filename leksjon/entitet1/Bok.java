@@ -1,4 +1,4 @@
-/*
+-/*
  * Bok.java
  *
  * November 2008, av Tomas Holt

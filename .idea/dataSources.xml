@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="1232336572">
+  <component name="DataSourceManagerImpl" format="xml" hash="490514533">
     <data-source source="LOCAL" name="minDb4@localhost" uuid="7b4a9d82-cc9b-45ca-8eca-5034d100a89f">
       <driver-ref>derby.remote</driver-ref>
       <synchronize>true</synchronize>
@@ -16,6 +16,17 @@
       <remarks>$PROJECT_DIR$/src/META-INF/persistence.xml</remarks>
       <jdbc-driver>org.apache.derby.jdbc.ClientDriver</jdbc-driver>
       <jdbc-url>jdbc:derby://localhost:1527/mindDb4</jdbc-url>
+      <libraries>
+        <library>
+          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/derby-license.txt</url>
+        </library>
+        <library>
+          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/derby-10.11.1.1.jar</url>
+        </library>
+        <library>
+          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/derbyclient-10.11.1.1.jar</url>
+        </library>
+      </libraries>
     </data-source>
   </component>
 </project>

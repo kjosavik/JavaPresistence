@@ -9,7 +9,7 @@
           <factory-entry name="NewPersistenceUnit" />
           <factory-entry name="kontoEntity4" value="63f366a5-dd3b-449e-99b4-7959ea5e5afb" />
         </datasource-mapping>
-        <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/META-INF/persistence.xml" />
+        <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/META-INF/persistence.xml" />
       </configuration>
     </facet>
   </component>
