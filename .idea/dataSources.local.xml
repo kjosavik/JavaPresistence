@@ -6,9 +6,10 @@
       <user-name>app</user-name>
     </data-source>
     <data-source name="kontoEntity4/TopLink" uuid="63f366a5-dd3b-449e-99b4-7959ea5e5afb">
-      <first-sync>true</first-sync>
       <user-name>app</user-name>
       <user-password>dfcbdfdadfda</user-password>
+      <schema-pattern>*.APP</schema-pattern>
+      <default-schemas>*.APP</default-schemas>
     </data-source>
   </component>
 </project>

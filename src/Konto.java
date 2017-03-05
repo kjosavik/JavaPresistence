@@ -1,6 +1,7 @@
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.Version;
 import java.io.Serializable;
 
 /**
@@ -17,12 +18,28 @@ public class Konto implements Serializable{
     private double saldo;
     private String eier;
 
+    @Version
+    private int vers;
+
     public Konto(){}
 
     public Konto(int kontonummer, double saldo, String eier) {
         this.kontonummer = kontonummer;
         this.saldo = saldo;
         this.eier = eier;
+        vers = 0;
+    }
+
+    public int getVers(){
+        return vers;
+    }
+
+    public boolean oppdaterVers(int versDao){
+        if(vers == versDao){
+            vers++;
+            return true;
+        }
+        return false;
     }
 
     public String getEier() {
