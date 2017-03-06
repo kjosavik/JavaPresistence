@@ -3,17 +3,17 @@
  */
 
 
-import javafx.util.converter.PercentageStringConverter;
-
-import javax.persistence.*;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 import java.util.List;
 
 
-
-public class KontoDao {
+public class KontoDao2 {
     private EntityManagerFactory emf;
 
-    public KontoDao(EntityManagerFactory emf){
+    public KontoDao2(EntityManagerFactory emf){
         this.emf = emf;
     }
 
@@ -90,28 +90,15 @@ public class KontoDao {
             return;
         }
         EntityManager em = getEM();
-        try {
+        try{
             em.getTransaction().begin();
             Konto til = em.find(Konto.class, kontonrTil);
             Konto fra = em.find(Konto.class, kontonrFra);
-            em.refresh(til);
-            em.refresh(fra);
             fra.setSaldo(fra.getSaldo() - belop);
             til.setSaldo(til.getSaldo() + belop);
-            Thread.sleep(20000L);
             em.merge(til);
             em.merge(fra);
             em.getTransaction().commit();
-        } catch (RollbackException e){
-            if(e.getCause() instanceof OptimisticLockException) {
-                em.clear();
-                em.close();
-                System.err.println("Transaksjon feilet pga. låsing, prøver igjen straks");
-                transaksjon(kontonrFra, kontonrTil, belop);
-                return;
-            }
-        }catch (InterruptedException e){
-             e.printStackTrace();
         } finally {
             closeEm(em);
         }
@@ -127,16 +114,14 @@ public class KontoDao {
     }
 
 
-
-
     public static void main(String[] args) {
         EntityManagerFactory emf = null;
-        KontoDao kdao = null;
+        KontoDao2 kdao = null;
 
         if(args[0].equals("delete")){
             try{
                 emf = Persistence.createEntityManagerFactory("konto");
-                kdao = new KontoDao(emf);
+                kdao = new KontoDao2(emf);
                 kdao.delete();
                 System.out.println("Alt ble slettet");
             }finally {
@@ -149,7 +134,7 @@ public class KontoDao {
                 //System.out.println("kommer hit");
                 emf = Persistence.createEntityManagerFactory("konto");
                 //System.out.println("kommer hit2");
-                kdao = new KontoDao(emf);
+                kdao = new KontoDao2(emf);
                 Konto konto1 = new Konto(1, 250, "Erik");
                 Konto konto2 = new Konto(2, 500, "Bob");
                 Konto konto3 = new Konto(3, 1000, "Maria");
@@ -157,9 +142,8 @@ public class KontoDao {
                 kdao.lagreKonto(konto1);
                 kdao.lagreKonto(konto2);
                 kdao.lagreKonto(konto3);
-                System.out.println("3 kontoer opprettet");
             } catch (Exception e) {
-                System.err.println("ERROR while createing");
+                System.err.println("Her");
                 e.printStackTrace();
             } finally {
                 try {
@@ -182,7 +166,7 @@ public class KontoDao {
         if (args[0].equals("find")){
             try {
                 emf = Persistence.createEntityManagerFactory("konto");
-                kdao = new KontoDao(emf);
+                kdao = new KontoDao2(emf);
                 List<Konto> liste = kdao.getKontoerMedMinstBelop(750);//bare en person med belop over 1000
                 //kontonummer 3 skal vaere eneste i lista
                 Konto konto = liste.get(0);
@@ -210,8 +194,8 @@ public class KontoDao {
         if(args[0].equals("overfor")){
             try{
                 emf = Persistence.createEntityManagerFactory("konto");
-                kdao = new KontoDao(emf);
-                kdao.transaksjon(1,2,100);
+                kdao = new KontoDao2(emf);
+                kdao.transaksjon(1,2,50);
             }finally {
                 emf.close();
             }
@@ -220,7 +204,7 @@ public class KontoDao {
         if(args[0].equals("resultat")){
             try{
                 emf = Persistence.createEntityManagerFactory("konto");
-                kdao = new KontoDao(emf);
+                kdao = new KontoDao2(emf);
                 List<Konto> res = kdao.getKontoerMedMinstBelop(0);
                 for (Konto konto: res){
                     System.out.print(konto + "\n");
@@ -230,18 +214,6 @@ public class KontoDao {
             }
         }
 
-        if(args[0].equals("noRollback")){
-            try{
-                emf = Persistence.createEntityManagerFactory("konto");
-                kdao = new KontoDao(emf);
-                kdao.transaksjon(1,2,100);
-            }catch(javax.persistence.RollbackException e ){
-                kdao.transaksjon(1,2,100);
-                System.out.println("Provde pa nytt");
-            }finally {
-                emf.close();
-            }
-        }
 
     }
 }

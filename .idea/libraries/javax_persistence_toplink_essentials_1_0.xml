@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="javax.persistence:toplink-essentials:1.0" type="repository">
+    <properties maven-id="javax.persistence:toplink-essentials:1.0" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/toplink-essentials-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/persistence-api-1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/toplink-essentials-1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

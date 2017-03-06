@@ -16,5 +16,28 @@
     <schema id="10" parent="1" name="SYSIBM"/>
     <schema id="11" parent="1" name="SYSPROC"/>
     <schema id="12" parent="1" name="SYSSTAT"/>
+    <table id="13" parent="2" name="KONTO"/>
+    <column id="14" parent="13" name="KONTONUMMER">
+      <Position>1</Position>
+      <DataType>INTEGER(10)|4</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="15" parent="13" name="SALDO">
+      <Position>2</Position>
+      <DataType>DOUBLE(52)|8</DataType>
+    </column>
+    <column id="16" parent="13" name="EIER">
+      <Position>3</Position>
+      <DataType>VARCHAR(255)|12</DataType>
+    </column>
+    <column id="17" parent="13" name="VERS">
+      <Position>4</Position>
+      <DataType>INTEGER(10)|4</DataType>
+    </column>
+    <key id="18" parent="13" name="SQL170306092019150">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>KONTONUMMER</ColNames>
+      <Primary>1</Primary>
+    </key>
   </database-model>
 </dataSource>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
-    <persistence-unit name="kontoEntity4" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="konto" transaction-type="RESOURCE_LOCAL">
         <provider>oracle.toplink.essentials.ejb.cmp3.EntityManagerFactoryProvider</provider>
         <class>Konto</class>
         <properties>
-            <property name="toplink.jdbc.url" value="jdbc:derby://localhost:1527/mindDb4"/>
+            <property name="toplink.jdbc.url" value="jdbc:derby://localhost:1527/minDb4"/>
             <property name="toplink.jdbc.user" value="app"/>
             <property name="toplink.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
             <property name="toplink.jdbc.password" value="app"/>
